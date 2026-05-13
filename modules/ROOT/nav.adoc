@@ -3,3 +3,4 @@
 ** xref:incoming-goods/index.adoc[Overview]
 ** xref:incoming-goods/spec-example-a.adoc[Spec — Example A]
 ** xref:incoming-goods/spec-example-b.adoc[Spec — Example B]
+** xref:incoming-goods/spec-endermatx-machine.adoc[Spec — Endermatx machine]

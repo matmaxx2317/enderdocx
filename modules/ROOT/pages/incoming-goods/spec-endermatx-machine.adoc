@@ -1,0 +1,16 @@
+= Incoming Goods Spec: Endermatx machine
+:doc-version: 1.0
+:doc-date: 2026-05-13
+:doc-remark: Initial release
+:product-name: Endermatx machine
+:product-part-number: TBD
+:product-supplier: TBD
+:product-weight: TBD
+:product-weight-tolerance: TBD
+:product-dim-length: TBD
+:product-dim-width: TBD
+:product-dim-height: TBD
+:product-image-front: https://placehold.co/400x300?text=endermatx-machine+Front
+:product-image-side: https://placehold.co/400x300?text=endermatx-machine+Side
+
+include::partial$incoming-goods-template.adoc[]
