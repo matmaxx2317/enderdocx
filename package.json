@@ -1,8 +1,9 @@
 {
   "name": "enderdocx",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "antora antora-playbook.yml",
+    "build": "node scripts/build.js",
     "serve": "npx http-server build/site"
   },
   "devDependencies": {
