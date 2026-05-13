@@ -1,12 +1,12 @@
 = Incoming Goods Spec: Endermatx machine
-:doc-version: 1.0
+:doc-version: 1.1
 :doc-date: 2026-05-13
 :doc-remark: Initial release
 :product-name: Endermatx machine
 :product-part-number: 123456
 :product-supplier: mojang
-:product-weight: 500g
-:product-weight-tolerance: 5g
+:product-weight: 50kg
+:product-weight-tolerance: 500g
 :product-dim-length: 100mm
 :product-dim-width: 100mm
 :product-dim-height: 3000mm
