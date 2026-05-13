@@ -25,12 +25,10 @@ if (railwaySha) {
 }
 
 const footerContent = [
-  '<p style="position:fixed;bottom:0;right:0;margin:0.5rem 1rem;font-size:0.75rem;',
-  'opacity:0.7;z-index:9999;">',
+  '<div class="version-footer">',
   `<a href="https://github.com/matmaxx2317/enderdocx/commit/${gitHashFull}"`,
-  ' target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">',
-  `v${appVersion}-${gitHashShort}</a>`,
-  '</p>',
+  ` target="_blank" rel="noopener">v${appVersion}-${gitHashShort}</a>`,
+  '</div>',
 ].join('');
 
 const partialsDir = path.join(root, 'supplemental-ui', 'partials');

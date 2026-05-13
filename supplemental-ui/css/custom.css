@@ -1,0 +1,282 @@
+/* ─── Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background-color: #07091a !important;
+  color: #eef2ff !important;
+}
+
+/* ─── Topbar ─── */
+header.navbar {
+  height: 32px !important;
+  min-height: 32px !important;
+  background-color: #070914 !important;
+  border-bottom: 1px solid #1a2840 !important;
+  box-shadow: none !important;
+  padding: 0 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+header.navbar * {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.navbar-brand,
+.navbar-item {
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+.navbar-item {
+  color: #eef2ff !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+
+.navbar-item:hover {
+  background: transparent !important;
+  color: #eef2ff !important;
+}
+
+/* ─── Layout ─── */
+.body {
+  margin-top: 32px !important;
+}
+
+/* ─── Sidebar ─── */
+.nav-container {
+  background-color: #0d1221 !important;
+  border-right: 1px solid #1a2840 !important;
+}
+
+.nav-panel-explore,
+.nav-panel-menu {
+  background-color: #0d1221 !important;
+}
+
+.nav-panel-explore .context {
+  background-color: #070914 !important;
+  border-bottom: 1px solid #1a2840 !important;
+  color: #9ab0d0 !important;
+}
+
+.nav-panel-explore .context a,
+.nav-panel-explore .context b {
+  color: #9ab0d0 !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+}
+
+.nav-list {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.nav-item a {
+  color: #9ab0d0 !important;
+  text-decoration: none !important;
+  font-size: 0.8125rem !important;
+}
+
+.nav-item a:hover {
+  color: #eef2ff !important;
+}
+
+.nav-item.is-current-page > a {
+  color: #eef2ff !important;
+  font-weight: 600 !important;
+}
+
+.nav-item-toggle {
+  color: #374d66 !important;
+}
+
+.nav-panel-menu .nav-heading {
+  color: #374d66 !important;
+  font-size: 0.6875rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ─── Main area ─── */
+main {
+  background-color: #07091a !important;
+}
+
+.content {
+  background-color: #07091a !important;
+  max-width: 720px !important;
+}
+
+/* ─── Toolbar / breadcrumb ─── */
+.toolbar {
+  background-color: #0d1221 !important;
+  border-bottom: 1px solid #1a2840 !important;
+}
+
+.toolbar a,
+.toolbar .breadcrumb li {
+  color: #374d66 !important;
+  font-size: 0.75rem !important;
+}
+
+.toolbar a:hover {
+  color: #9ab0d0 !important;
+}
+
+/* ─── Document ─── */
+.doc {
+  color: #eef2ff !important;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.doc h1,
+.doc h2,
+.doc h3,
+.doc h4,
+.doc h5,
+.doc h6 {
+  color: #eef2ff !important;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-weight: 600 !important;
+  border-bottom-color: #1a2840 !important;
+}
+
+.doc p,
+.doc li {
+  color: #eef2ff !important;
+  line-height: 1.6 !important;
+}
+
+.doc a {
+  color: #4d6fa0 !important;
+}
+
+.doc a:hover {
+  color: #eef2ff !important;
+}
+
+/* ─── Code ─── */
+.doc pre {
+  background-color: #0d1221 !important;
+  border: 1px solid #1a2840 !important;
+  color: #9ab0d0 !important;
+}
+
+.doc code {
+  background-color: #0d1221 !important;
+  border: 1px solid #1a2840 !important;
+  color: #9ab0d0 !important;
+  padding: 0.1em 0.3em !important;
+  border-radius: 3px !important;
+}
+
+.doc pre code {
+  border: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* ─── Tables ─── */
+.doc table {
+  border: 1px solid #1a2840 !important;
+}
+
+.doc table th {
+  background-color: #0d1221 !important;
+  color: #eef2ff !important;
+  border: 1px solid #1a2840 !important;
+  font-weight: 600 !important;
+}
+
+.doc table td {
+  border: 1px solid #1a2840 !important;
+  color: #eef2ff !important;
+}
+
+.doc table tr:nth-child(even) > td {
+  background-color: rgba(13, 18, 33, 0.5) !important;
+}
+
+/* ─── Admonitions ─── */
+.doc .admonitionblock {
+  background-color: #0d1221 !important;
+  border: 1px solid #1a2840 !important;
+  border-left: 3px solid #4d6fa0 !important;
+}
+
+.doc .admonitionblock td.content {
+  color: #eef2ff !important;
+}
+
+.doc .admonitionblock td.icon .title {
+  color: #4d6fa0 !important;
+}
+
+/* ─── Antora footer ─── */
+footer.footer {
+  background-color: #070914 !important;
+  border-top: 1px solid #1a2840 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* ─── Version footer (generated by scripts/build.js) ─── */
+.version-footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 32px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  background: #070914;
+  border-top: 1px solid #1a2840;
+  z-index: 40;
+  font-size: 0.75rem;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.version-footer a {
+  color: #9ab0d0;
+  text-decoration: none;
+}
+
+.version-footer a:hover {
+  color: #eef2ff;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07091a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a2840;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3d5c;
+}
+
+/* ─── Focus ─── */
+*:focus {
+  outline-color: #4d6fa0 !important;
+}
+
+:focus-visible {
+  outline: 2px solid #4d6fa0 !important;
+}
