@@ -1,0 +1,131 @@
+name: New Spec
+
+on:
+  workflow_dispatch:
+    inputs:
+      product_name:
+        description: 'Product name (e.g. "Widget X-500")'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compute names
+        id: names
+        run: |
+          PRODUCT="${{ github.event.inputs.product_name }}"
+          SLUG=$(printf '%s' "$PRODUCT" \
+            | tr '[:upper:]' '[:lower:]' \
+            | tr -cs 'a-z0-9' '-' \
+            | sed 's/^-*//;s/-*$//')
+          echo "slug=$SLUG"           >> "$GITHUB_OUTPUT"
+          echo "branch=spec/$SLUG"    >> "$GITHUB_OUTPUT"
+          echo "file=spec-$SLUG.adoc" >> "$GITHUB_OUTPUT"
+          echo "date=$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
+      - name: Create branch
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${{ steps.names.outputs.branch }}"
+
+      - name: Scaffold spec file and update nav
+        env:
+          PRODUCT_NAME: ${{ github.event.inputs.product_name }}
+          SLUG:         ${{ steps.names.outputs.slug }}
+          DEST:         modules/ROOT/pages/incoming-goods/${{ steps.names.outputs.file }}
+          DATE:         ${{ steps.names.outputs.date }}
+        run: |
+          python3 - <<'EOF'
+          import os, re
+
+          product = os.environ['PRODUCT_NAME']
+          slug    = os.environ['SLUG']
+          dest    = os.environ['DEST']
+          date    = os.environ['DATE']
+
+          # ── Copy + patch spec ─────────────────────────────────────────────
+          src = open('modules/ROOT/pages/incoming-goods/spec-example-a.adoc').read()
+
+          patches = [
+              (r'^= Incoming Goods Spec:.*',
+                  f'= Incoming Goods Spec: {product}'),
+              (r'^:doc-date: .*',
+                  f':doc-date: {date}'),
+              (r'^:doc-remark: .*',
+                  ':doc-remark: Initial release'),
+              (r'^:doc-version: .*',
+                  ':doc-version: 1.0'),
+              (r'^:product-name: .*',
+                  f':product-name: {product}'),
+              (r'^:product-part-number: .*',
+                  ':product-part-number: TBD'),
+              (r'^:product-supplier: .*',
+                  ':product-supplier: TBD'),
+              (r'^:product-weight: .*',
+                  ':product-weight: TBD'),
+              (r'^:product-weight-tolerance: .*',
+                  ':product-weight-tolerance: TBD'),
+              (r'^:product-dim-length: .*',
+                  ':product-dim-length: TBD'),
+              (r'^:product-dim-width: .*',
+                  ':product-dim-width: TBD'),
+              (r'^:product-dim-height: .*',
+                  ':product-dim-height: TBD'),
+              (r'^:product-image-front: .*',
+                  f':product-image-front: https://placehold.co/400x300?text={slug}+Front'),
+              (r'^:product-image-side: .*',
+                  f':product-image-side: https://placehold.co/400x300?text={slug}+Side'),
+          ]
+
+          for pattern, replacement in patches:
+              src = re.sub(pattern, replacement, src, flags=re.MULTILINE)
+
+          with open(dest, 'w') as f:
+              f.write(src)
+
+          print(f'Created {dest}')
+
+          # ── Update nav.adoc ───────────────────────────────────────────────
+          nav_path = 'modules/ROOT/nav.adoc'
+          lines = open(nav_path).read().splitlines(keepends=True)
+
+          last_spec = max(
+              (i for i, l in enumerate(lines)
+               if l.strip().startswith('** xref:incoming-goods/')),
+              default=-1
+          )
+
+          entry = f'** xref:incoming-goods/spec-{slug}.adoc[Spec — {product}]\n'
+          lines.insert(last_spec + 1, entry)
+
+          with open(nav_path, 'w') as f:
+              f.write(''.join(lines))
+
+          print(f'Added nav entry: {entry.strip()}')
+          EOF
+
+      - name: Commit and push
+        run: |
+          git add \
+            "modules/ROOT/pages/incoming-goods/${{ steps.names.outputs.file }}" \
+            modules/ROOT/nav.adoc
+          git commit -m "feat: scaffold spec for ${{ github.event.inputs.product_name }}"
+          git push -u origin "${{ steps.names.outputs.branch }}"
+
+      - name: Summary
+        run: |
+          echo "### Spec scaffolded :white_check_mark:" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| | |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|---|---|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Branch | \`${{ steps.names.outputs.branch }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| File | \`modules/ROOT/pages/incoming-goods/${{ steps.names.outputs.file }}\` |" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Fill in the \`TBD\` attributes on the branch, then open a PR." >> "$GITHUB_STEP_SUMMARY"
