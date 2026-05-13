@@ -1,0 +1,16 @@
+= Incoming Goods Spec: Example Product B
+:doc-version: 1.0
+:doc-date: 2026-05-12
+:doc-remark: Initial release
+:product-name: Example Product B
+:product-part-number: EX-B-002
+:product-supplier: Another Supplier AG
+:product-weight: 150 g
+:product-weight-tolerance: 3 g
+:product-dim-length: 60 mm
+:product-dim-width: 60 mm
+:product-dim-height: 30 mm
+:product-image-front: https://placehold.co/400x300?text=Product+B+Front
+:product-image-side: https://placehold.co/400x300?text=Product+B+Side
+
+include::partial$incoming-goods-template.adoc[]
