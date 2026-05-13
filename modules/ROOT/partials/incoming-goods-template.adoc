@@ -1,0 +1,58 @@
+== Revision History
+
+[cols="1,1,4", options="header"]
+|===
+|Version |Date |Description
+|{doc-version} |{doc-date} |{doc-remark}
+|===
+
+== Product Identification
+
+[cols="1,3", options="header"]
+|===
+|Field |Value
+|Product Name |{product-name}
+|Part Number |{product-part-number}
+|Supplier |{product-supplier}
+|===
+
+== Visual Inspection
+
+Verify the unit matches the reference images below. Zero visible defects permitted.
+
+image::{product-image-front}[Front view — {product-name}, 220, link=self]
+image::{product-image-side}[Side view — {product-name}, 220, link=self]
+
+[cols="2,1,1", options="header"]
+|===
+|Check |Expected |Result
+|Housing — no cracks or scratches |Pass |
+|Labeling legible and correct |Pass |
+|Connector pins straight and undamaged |Pass |
+|===
+
+== Weight Check
+
+[cols="1,1,1,1", options="header"]
+|===
+|Test |Nominal |Tolerance |Result
+|Weight |{product-weight} |± {product-weight-tolerance} |
+|===
+
+== Dimensional Check
+
+[cols="1,1,1,1", options="header"]
+|===
+|Dimension |Nominal |Tolerance |Result
+|Length |{product-dim-length} |± 0.5 mm |
+|Width |{product-dim-width} |± 0.5 mm |
+|Height |{product-dim-height} |± 0.5 mm |
+|===
+
+== Sign-Off
+
+[cols="2,2,1", options="header"]
+|===
+|Inspector |Date |Signature
+| | |
+|===

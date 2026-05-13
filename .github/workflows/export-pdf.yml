@@ -1,0 +1,52 @@
+name: Export Doc to PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      doc_path:
+        description: 'Path to .adoc file (e.g. modules/ROOT/pages/incoming-goods/spec-example-a.adoc)'
+        required: true
+        default: 'modules/ROOT/pages/incoming-goods/spec-example-a.adoc'
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Install asciidoctor-pdf
+        run: gem install asciidoctor-pdf
+
+      - name: Preprocess Antora includes and export to PDF
+        env:
+          DOC: ${{ github.event.inputs.doc_path }}
+        run: |
+          python3 - <<'EOF'
+          import os, re
+
+          doc = os.environ['DOC']
+          doc_dir = os.path.dirname(doc) or '.'
+          partials_rel = os.path.relpath('modules/ROOT/partials', doc_dir)
+
+          content = open(doc).read()
+          content = re.sub(r'include::partial\$', f'include::{partials_rel}/', content)
+
+          with open('/tmp/render.adoc', 'w') as f:
+              f.write(content)
+
+          print(f"Preprocessed: {doc}")
+          print(f"Partials path resolved to: {partials_rel}/")
+          EOF
+
+          asciidoctor-pdf /tmp/render.adoc \
+            -a imagesdir="$(pwd)/modules/ROOT/images" \
+            -o output.pdf
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: exported-pdf
+          path: output.pdf

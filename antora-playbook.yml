@@ -1,0 +1,21 @@
+site:
+  title: enderdocx
+  url: https://matmaxx2317.github.io/enderdocx
+  start_page: enderdocx::index.adoc
+
+content:
+  sources:
+    - url: .
+      branches: HEAD
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+
+asciidoc:
+  extensions:
+    - asciidoctor-kroki
+
+output:
+  dir: build/site

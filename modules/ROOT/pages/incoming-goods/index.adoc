@@ -1,0 +1,28 @@
+= Incoming Goods Specifications
+:description: Overview of all incoming goods test specifications
+
+This section contains test specifications for incoming goods inspection.
+
+Each product has its own specification document with product-specific attributes — name, part number, images, and dimensions. All specs share a common test template so the procedure never duplicates.
+
+== Available Specs
+
+* xref:spec-example-a.adoc[Spec — Example Product A]
+* xref:spec-example-b.adoc[Spec — Example Product B]
+
+== Workflow Diagram
+
+[mermaid]
+....
+graph TD
+  A[Receive shipment] --> B[Visual inspection]
+  B --> C{Pass?}
+  C -->|Yes| D[Weight check]
+  C -->|No| E[Reject & document]
+  D --> F{Pass?}
+  F -->|Yes| G[Dimensional check]
+  F -->|No| E
+  G --> H{Pass?}
+  H -->|Yes| I[Accept & sign off]
+  H -->|No| E
+....

@@ -1,0 +1,36 @@
+= enderdocx
+:description: Internal documentation repository
+
+Welcome to enderdocx — the internal documentation system.
+
+Use the navigation on the left to browse documentation by topic.
+
+== Getting Started
+
+* Docs are written in AsciiDoc (`.adoc`) and stored in this repository.
+* The site is automatically published to GitHub Pages on every push to `main`.
+* To export a single doc to PDF, trigger the `export-pdf` workflow manually from the Actions tab.
+* Mermaid diagrams are rendered server-side via Kroki — no client-side JavaScript required.
+
+== Example: Mermaid Diagram
+
+[mermaid]
+....
+graph LR
+  A[Create .adoc] --> B[Push to main]
+  B --> C[GitHub Actions builds site]
+  C --> D[Published to GitHub Pages]
+....
+
+== Adding a New Document
+
+. Create a `.adoc` file under `modules/ROOT/pages/<topic>/`.
+. Add an entry to `modules/ROOT/nav.adoc`.
+. Push to `main` — the site rebuilds automatically.
+
+== Adding a New Product Spec
+
+. Copy `modules/ROOT/pages/incoming-goods/spec-example-a.adoc` to a new file.
+. Update all `:product-*:` attributes at the top of the file.
+. Set `:product-image-*:` attributes to your image URLs.
+. Add the entry to `modules/ROOT/nav.adoc`.
