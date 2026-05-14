@@ -1,7 +1,4 @@
 = Incoming Goods Spec: Example Product A
-:doc-version: 1.0
-:doc-date: 2026-05-12
-:doc-remark: Initial release
 :product-name: Example Product A
 :product-part-number: EX-A-001
 :product-supplier: Supplier GmbH
@@ -12,5 +9,13 @@
 :product-dim-height: 45 mm
 :product-image-front: https://placehold.co/400x300?text=Product+A+Front
 :product-image-side: https://placehold.co/400x300?text=Product+A+Side
+
+== Revision History
+
+[cols="1,1,4", options="header"]
+|===
+|Version |Date |Description
+|1.0 |2026-05-12 |Initial release
+|===
 
 include::partial$incoming-goods-template.adoc[]

@@ -1,7 +1,4 @@
 = Incoming Goods Spec: Endermatx machine
-:doc-version: 1.1
-:doc-date: 2026-05-13
-:doc-remark: Initial release
 :product-name: Endermatx machine
 :product-part-number: 123456
 :product-supplier: mojang
@@ -12,5 +9,13 @@
 :product-dim-height: 3000mm
 :product-image-front: https://placehold.co/400x300?text=endermatx-machine+Front
 :product-image-side: https://placehold.co/400x300?text=endermatx-machine+Side
+
+== Revision History
+
+[cols="1,1,4", options="header"]
+|===
+|Version |Date |Description
+|1.1 |2026-05-13 |Initial release
+|===
 
 include::partial$incoming-goods-template.adoc[]
