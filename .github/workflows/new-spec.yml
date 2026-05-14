@@ -56,12 +56,6 @@ jobs:
           patches = [
               (r'^= Incoming Goods Spec:.*',
                   f'= Incoming Goods Spec: {product}'),
-              (r'^:doc-date: .*',
-                  f':doc-date: {date}'),
-              (r'^:doc-remark: .*',
-                  ':doc-remark: Initial release'),
-              (r'^:doc-version: .*',
-                  ':doc-version: 1.0'),
               (r'^:product-name: .*',
                   f':product-name: {product}'),
               (r'^:product-part-number: .*',
@@ -86,6 +80,13 @@ jobs:
 
           for pattern, replacement in patches:
               src = re.sub(pattern, replacement, src, flags=re.MULTILINE)
+
+          # Replace the first revision history data row with today's date
+          src = re.sub(
+              r'^\|1\.0 \|[^\|]+ \|Initial release',
+              f'|1.0 |{date} |Initial release',
+              src, count=1, flags=re.MULTILINE
+          )
 
           with open(dest, 'w') as f:
               f.write(src)
