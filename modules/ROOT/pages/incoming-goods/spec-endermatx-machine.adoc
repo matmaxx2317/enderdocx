@@ -15,7 +15,8 @@
 [cols="1,1,4", options="header"]
 |===
 |Version |Date |Description
-|1.1 |2026-05-13 |Initial release
+|1.0 |2026-05-12 |Initial release
+|1.1 |2026-05-13 |Refine tests
 |===
 
 include::partial$incoming-goods-template.adoc[]
